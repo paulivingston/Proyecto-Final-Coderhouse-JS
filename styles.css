@@ -1,0 +1,28 @@
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 15% 80% 5%;
+    margin: 0;
+}
+
+#main-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 70vw;
+}
+
+
+
+
+
+footer {
+    display: flex;
+    justify-content: space-evenly;
+}
