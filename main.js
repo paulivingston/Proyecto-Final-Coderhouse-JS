@@ -1,27 +1,45 @@
-
-//stock
-
-let MP = [500, 150, 240, 100];
-
-function checkStock() {
-    document.getElementById("mp1").innerText = mp1.cantidad;
-    document.getElementById("mp2").innerText = mp2.cantidad;
-    document.getElementById("mp3").innerText = mp3.cantidad;
-    document.getElementById("mp4").innerText = mp4.cantidad; 
-};
-
 //objetos
 
-function MateriaPrima(nombre, proveedor, cantidad) {
-    this.nombre = nombre;
-    this.proveedor = proveedor;
-    this.cantidad = cantidad;
+const total =0;
+
+class MateriaPrima {
+    constructor (id, nombre, proveedor, cantidad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.proveedor = proveedor;
+        this.cantidad = cantidad;
+    }
+    usar(a) {
+        this.cantidad -= a;
+    }
+    static total = total + 1;
 }
 
-let mp1 = new MateriaPrima("Materia Prima 1", "Proveedor 1", MP[0])
-let mp2 = new MateriaPrima("Materia Prima 2", "Proveedor 2", MP[1])
-let mp3 = new MateriaPrima("Materia Prima 3", "Proveedor 3", MP[2])
-let mp4 = new MateriaPrima("Materia Prima 4", "Proveedor 1", MP[3])
+let lastId = 0;
+let mp1 = new MateriaPrima(1, "Materia Prima 1", "Proveedor 1", 500);
+let mp2 = new MateriaPrima(2, "Materia Prima 2", "Proveedor 2", 150);
+let mp3 = new MateriaPrima(3, "Materia Prima 3", "Proveedor 3", 240);
+let mp4 = new MateriaPrima(4, "Materia Prima 4", "Proveedor 1", 100);
+
+function checkStock() {
+    for (var i=0; i<4; i++) { 
+        let tr = document.createElement("tr");
+        let cell = document.createElement("td");        
+        cell.innerHTML = mp1.id;
+        tr.appendChild(cell);
+        cell.innerHTML = mp1.nombre;
+        tr.appendChild(cell);
+        cell.innerHTML = mp1.proveedor;
+        tr.append(cell);
+        cell.innerHTML = mp1.cantidad;
+        tr.append(cell);
+
+        document.getElementById("tabla-stock").appendChild(tr);
+    };
+    
+};
+
+
 
 
 //recipes
@@ -65,5 +83,6 @@ function enoughStock () {
     if (enough == true) alert("Su producto se ha generado correctamente");
 
 }
-*/
+
 localStorage.setItem("MP", MP);
+*/
