@@ -39,7 +39,11 @@ function checkStock() {
     
 };
 
-
+//events
+let nuevo = document.getElementById("nuevoInsumo");
+nuevo.addEventListener("click", function() {
+    alert("En construccion...")
+});
 
 
 //recipes
