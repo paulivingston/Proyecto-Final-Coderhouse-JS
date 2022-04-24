@@ -15,25 +15,31 @@ class MateriaPrima {
     static total = total + 1;
 }
 
-let lastId = 0;
 let mp1 = new MateriaPrima(1, "Materia Prima 1", "Proveedor 1", 500);
 let mp2 = new MateriaPrima(2, "Materia Prima 2", "Proveedor 2", 150);
 let mp3 = new MateriaPrima(3, "Materia Prima 3", "Proveedor 3", 240);
 let mp4 = new MateriaPrima(4, "Materia Prima 4", "Proveedor 1", 100);
 
-function checkStock() {
-    for (var i=0; i<4; i++) { 
-        let tr = document.createElement("tr");
-        let cell = document.createElement("td");        
-        cell.innerHTML = mp1.id;
-        tr.appendChild(cell);
-        cell.innerHTML = mp1.nombre;
-        tr.appendChild(cell);
-        cell.innerHTML = mp1.proveedor;
-        tr.append(cell);
-        cell.innerHTML = mp1.cantidad;
-        tr.append(cell);
+const MPs = [mp1, mp2, mp3, mp4];
 
+const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
+/*
+for (const MP of MPs) {
+    guardarLocal(MPs.id, JSON.stringify(MP));
+}
+*/
+
+guardarLocal("listaMPs", JSON.stringify(MPs));
+
+function checkStock() {
+    for (var i=0; i<4; i++) {
+        let mpi = MPs[i]; 
+        let tr = document.createElement("tr");
+        for (prop in mpi) {
+            let cell = document.createElement("td");        
+            cell.innerHTML = mpi[prop];
+            tr.append(cell);
+        }
         document.getElementById("tabla-stock").appendChild(tr);
     };
     
@@ -50,29 +56,34 @@ nuevo.addEventListener("click", function() {
 
 function generateProduct(product) {
     let cant = prompt("Cuantas mezclas desea elaborar?");
+    const almacenados = JSON.parse(localStorage.getItem("listaMPs"));
     switch (product) {
         case 1:
             for (i=0;i<cant;i++) {
-                MP[1] -= 10;
-                MP[2] -= 15;
-                MP[0] -= 23;
+                MPs[1].cantidad -= 10;
+                MPs[2].cantidad -= 15;
+                MPs[0].cantidad -= 23;
             };
             break;
         case 2:
             for (i=0;i<cant;i++) {
-                MP[2] -= 20;
-                MP[0] -= 10;
+                MPs[2].cantidad -= 20;
+                MPs[0].cantidad -= 10;
             };
             break;
         case 3:
             for (i=0;i<cant;i++) {
-                MP[1] -= 18;
-                MP[2] -= 13;
-                MP[3] -= 5;
-                MP[0] -= 37;
+                MPs[1].cantidad -= 18;
+                MPs[2].cantidad -= 13;
+                MPs[3].cantidad -= 5;
+                MPs[0].cantidad -= 37;
             };
             break;
     }
+
+    const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
+    guardarLocal("listaMPs", JSON.stringify(MPs));
+
     //enoughStock();
 };
 /*
