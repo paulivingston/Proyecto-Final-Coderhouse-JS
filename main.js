@@ -48,7 +48,12 @@ function checkStock() {
 //events
 let nuevo = document.getElementById("nuevoInsumo");
 nuevo.addEventListener("click", function() {
-    alert("En construccion...")
+    Swal.fire({
+        title: 'En construccion..',
+        text: 'Esta funcion todavia no esta disponible',
+        icon: 'warning',
+        confirmButtonText: 'Ok'
+    })
 });
 
 
@@ -56,13 +61,14 @@ nuevo.addEventListener("click", function() {
 
 function generateProduct(product) {
     let cant = prompt("Cuantas mezclas desea elaborar?");
-    const almacenados = JSON.parse(localStorage.getItem("listaMPs"));
+    const MPs = JSON.parse(localStorage.getItem("listaMPs"));
     switch (product) {
         case 1:
             for (i=0;i<cant;i++) {
-                MPs[1].cantidad -= 10;
-                MPs[2].cantidad -= 15;
-                MPs[0].cantidad -= 23;
+                MPs[1].usar(10);
+                MPs[2].usar(15);
+                MPs[0].usar(23);
+                console.log(MPs);
             };
             break;
         case 2:
