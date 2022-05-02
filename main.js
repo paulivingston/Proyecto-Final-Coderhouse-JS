@@ -23,7 +23,7 @@ let mp4 = new MateriaPrima(4, "Materia Prima 4", "Proveedor 1", 100);
 const MPs = [mp1, mp2, mp3, mp4];
 
 const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
-/*
+/* 
 for (const MP of MPs) {
     guardarLocal(MPs.id, JSON.stringify(MP));
 }
@@ -31,43 +31,19 @@ for (const MP of MPs) {
 
 guardarLocal("listaMPs", JSON.stringify(MPs));
 
-function checkStock() {
-    for (var i=0; i<4; i++) {
-        let mpi = MPs[i]; 
-        let tr = document.createElement("tr");
-        for (prop in mpi) {
-            let cell = document.createElement("td");        
-            cell.innerHTML = mpi[prop];
-            tr.append(cell);
-        }
-        document.getElementById("tabla-stock").appendChild(tr);
-    };
-    
-};
-
-//events
-let nuevo = document.getElementById("nuevoInsumo");
-nuevo.addEventListener("click", function() {
-    Swal.fire({
-        title: 'En construccion..',
-        text: 'Esta funcion todavia no esta disponible',
-        icon: 'warning',
-        confirmButtonText: 'Ok'
-    })
-});
-
 
 //recipes
 
 function generateProduct(product) {
     let cant = prompt("Cuantas mezclas desea elaborar?");
     const MPs = JSON.parse(localStorage.getItem("listaMPs"));
+    console.log(MPs);
     switch (product) {
         case 1:
             for (i=0;i<cant;i++) {
-                MPs[1].usar(10);
-                MPs[2].usar(15);
-                MPs[0].usar(23);
+                MPs[1].cantidad -= 10;
+                MPs[2].cantidad -= 15;
+                MPs[0].cantidad -= 23;
                 console.log(MPs);
             };
             break;
@@ -92,18 +68,15 @@ function generateProduct(product) {
 
     //enoughStock();
 };
-/*
+
 function enoughStock () {
     let enough = true;
-    enough = MP.map(function(num) {
-        if (num<0) {
-            alert("No posee la cantidad suficiente para realizar el producto");
-            return false;
-        };
+    const MPs = JSON.parse(localStorage.getItem("listaMPs"));
+    enough = MPs.map(function(num) {
+        enough = (num<0) ? true : false;
+        if (!enough) alert("No posee la cantidad suficiente para realizar el producto");
+        return enough;
     });
-    if (enough == true) alert("Su producto se ha generado correctamente");
+    if (enough) alert("Su producto se ha generado correctamente");
 
-}
-
-localStorage.setItem("MP", MP);
-*/
+};
