@@ -1,7 +1,7 @@
 //objetos
 
 const total =0;
-
+/*
 class MateriaPrima {
     constructor (id, nombre, proveedor, cantidad) {
         this.id = id;
@@ -23,21 +23,33 @@ let mp4 = new MateriaPrima(4, "Materia Prima 4", "Proveedor 1", 100);
 const MPs = [mp1, mp2, mp3, mp4];
 
 const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
-/* 
-for (const MP of MPs) {
-    guardarLocal(MPs.id, JSON.stringify(MP));
-}
-*/
+
 
 guardarLocal("listaMPs", JSON.stringify(MPs));
+*/
 
+/*
+//mysql
+import { createConnection } from 'mysql';
+
+const connection = createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  database: 'db',
+  port: 3333
+});
+
+console.log(connection);
+
+*/
 
 //recipes
 
 function generateProduct(product) {
     let cant = prompt("Cuantas mezclas desea elaborar?");
     const MPs = JSON.parse(localStorage.getItem("listaMPs"));
-    console.log(MPs);
+
     switch (product) {
         case 1:
             for (i=0;i<cant;i++) {

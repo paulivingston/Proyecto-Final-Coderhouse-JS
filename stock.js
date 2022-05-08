@@ -1,5 +1,10 @@
 
 
+
+
+
+
+
 //events
 let nuevo = document.getElementById("nuevoInsumo");
 nuevo.addEventListener("click", function() {
@@ -14,6 +19,7 @@ nuevo.addEventListener("click", function() {
 
 
 function checkStock() {
+    /*
     for (var i=0; i<4; i++) {
         let mpi = MPs[i]; 
         let tr = document.createElement("tr");
@@ -24,5 +30,27 @@ function checkStock() {
         }
         document.getElementById("tabla-stock").appendChild(tr);
     };
+    */
+    let tabla = document.getElementById("tabla-stock");
+
+    fetch ('http://localhost:3000/mp')
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(mp => {
+            let mpHTML = `
+            <tr>
+            <th scope="row">${mp.id}</th>
+            <td>${mp.name}</td>
+            <td>${mp.prov}</td>
+            <td>${mp.stock}</td>
+            </tr> `
+
+            tabla.innerHTML += mpHTML;  
+        });
+    })
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response));
     
 };
+
+checkStock();

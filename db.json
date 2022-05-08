@@ -1,0 +1,45 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "mp": [ 
+    {
+      "id": 1, 
+      "name": "Materia Prima 1", 
+      "prov": "Proveedor 1", 
+      "stock": 500
+    },
+    {
+      "id": 2, 
+      "name": "Materia Prima 2", 
+      "prov": "Proveedor 2", 
+      "stock": 150
+    },
+    {
+      "id": 3, 
+      "name": "Materia Prima 3", 
+      "prov": "Proveedor 3", 
+      "stock": 240
+    },
+    {
+      "id": 4, 
+      "name": "Materia Prima 4", 
+      "prov": "Proveedor 1", 
+      "stock": 100
+    }
+  ]
+}

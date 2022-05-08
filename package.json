@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "nodejs": "^0.0.0"
+  },
+  "name": "proyecto-final",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulivingston/Proyecto-Final-Coderhouse-JS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulivingston/Proyecto-Final-Coderhouse-JS/issues"
+  },
+  "homepage": "https://github.com/paulivingston/Proyecto-Final-Coderhouse-JS#readme",
+  "description": ""
+}
