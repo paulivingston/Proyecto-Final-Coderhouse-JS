@@ -1,26 +1,105 @@
 body {
     height: 100vh;
     display: grid;
-    grid-template-rows: 15% 80% 5%;
+    grid-template-rows: 10% 85% 5%;
     margin: 0;
 }
 
 #main-index {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+    display: grid;
+    grid-template-rows: 40% 50%;
+    gap: 10%;
 }
 
-#buttons {
+.div-center {
     display: flex;
     justify-content: space-evenly;
-    width: 70vw;
+    width: 100%;
 }
 
+.btn-main {
+    width: 30%;
+    height: 45%;
+    font-size: 250%;
+    font-weight: 400;
+    background-color: rgb(92, 205, 207);
+    border-color:  rgb(92, 205, 207);
+}
 
+.btn-main:hover {
+    font-weight: 500;
+    background-color: rgb(64, 148, 149);
+    border-color:  rgb(64, 148, 149);
+}
 
+h1{
+    text-align: center;
+    font-size: 700%;
+    align-self: center;
+    font-weight: 300;
+}
 
+h2{
+    text-align: center;
+    font-size: 500%;
+    align-self: center;
+    font-weight: 300;
+}
+
+#agregar-insumo {
+    text-align: right;
+    margin-right: 20px;
+}
+
+#main-stock {
+    display: grid;
+    grid-template-rows: 7% 25% 60%;
+    gap: 3%;
+}
+
+.btn-add {
+    width: 20%;
+    height: 100%;
+    font-size: 120%;
+    font-weight: 400;
+    background-color: rgb(92, 205, 207);
+    border-color:  rgb(92, 205, 207);
+}
+
+.btn-add:hover {
+    font-weight: 500;
+    background-color: rgb(64, 148, 149);
+    border-color:  rgb(64, 148, 149);
+}
+
+#main-order {
+    display: grid;
+    grid-template-rows: 25% 75%;
+    gap: 3%;
+}
+
+.card {
+    text-align: center;
+    height: 87%;
+}
+
+.card h5 {
+    font-size: 150%;
+    color: rgb(26, 63, 63);
+}
+
+.btn-card {
+    font-size: 120%;
+    font-weight: 400;
+    background-color: rgb(92, 205, 207);
+    border-color:  rgb(92, 205, 207);
+}
+
+.btn-card:hover {
+    font-weight: 500;
+    background-color: rgb(64, 148, 149);
+    border-color:  rgb(64, 148, 149);
+}
 
 footer {
     display: flex;
