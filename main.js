@@ -26,7 +26,7 @@ function generateProduct(product) {
     MPs = JSON.parse(localStorage.getItem("listaMPs"));
     let id = MPs.length;
     if (cant>0&&cant<=10&&id!=0){  
-        let check = false;  
+        let check = true;  
         switch (product) {
             case 1:
                 for (i=0;i<cant;i++) {
