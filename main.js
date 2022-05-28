@@ -26,85 +26,78 @@ function generateProduct(product) {
     MPs = JSON.parse(localStorage.getItem("listaMPs"));
     let id = MPs.length;
     if (cant>0&&cant<=10&&id!=0){  
-        let check = true;  
+        let check = true;
         switch (product) {
             case 1:
-                for (i=0;i<cant;i++) {
-                    for (j=0;j<id;j++) {
-                        if (MPs[j].nombre == 'Estearato de Magnesio') {
-                            let check = enoughStock(j, 10);
-                            if (check) MPs[j].cantidad -=10;
-                            console.log(MPs[j].cantidad);
-                        }
-                        if (!check) break;
-                        if (MPs[j].nombre == 'Fosfato Tricalcico') {
-                            let check = enoughStock(j, 30);
-                            if (check) MPs[j].cantidad -=30;
-                        }
-                        if (!check) break;
-                        if (MPs[j].nombre == 'Croscarmelosa sodica') {
-                            let check = enoughStock(j, 15);
-                            if (check) MPs[j].cantidad -=15;
-                        }
-                        if (!check) break;
+                for (j=0;j<id;j++) {
+                    if (MPs[j].nombre == 'Estearato de Magnesio') {
+                        check = enoughStock(j, 10*cant);
+                        if (check) MPs[j].cantidad -=(10*cant);
                     }
-                };
+                    if (MPs[j].nombre == 'Fosfato Tricalcico') {
+                        check = enoughStock(j, 30*cant);
+                        if (check) MPs[j].cantidad -=(30*cant);
+                    }
+                    if (MPs[j].nombre == 'Croscarmelosa sodica') {
+                        check = enoughStock(j, 15*cant);
+                        if (check) MPs[j].cantidad -=(15*cant);
+                    }
+                    if (j+1==id) {
+                        var pt = true;
+                    }
+                    confirmation(check,pt);
+                    if(!check) break;
+                }
                 break;
             case 2:
-                for (i=0;i<cant;i++) {
                     for (j=0;j<id;j++) {
                         if (MPs[j].nombre == 'Estearato de Magnesio') {
-                            let check = enoughStock(j, 50);
-                            if (check) MPs[j].cantidad -=50;
+                            let check = enoughStock(j, 50*cant);
+                            if (check) MPs[j].cantidad -=(50*cant);
                         }
-                        if (!check) break;
                         if (MPs[j].nombre == 'Fosfato Tricalcico') {
-                            let check = enoughStock(j, 10);
-                            if (check) MPs[j].cantidad -=10;
+                            let check = enoughStock(j, 10*cant);
+                            if (check) MPs[j].cantidad -=(10*cant);
                         }
-                        if (!check) break;
                         if (MPs[j].nombre == 'Proteina de Soja') {
-                            let check = enoughStock(j, 45);
-                            if (check) MPs[j].cantidad -=45;
+                            let check = enoughStock(j, 45*cant);
+                            if (check) MPs[j].cantidad -=(45*cant);
                         }
-                        if (!check) break;
-                    }
-                };
+                        if (j+1==id) {
+                            var pt = true;
+                        }
+                    confirmation(check,pt);
+                    if(!check) break;
+                }
                 break;
             case 3:
-                for (i=0;i<cant;i++) {
                     for (j=0;j<id;j++) {
                         if (MPs[j].nombre == 'Estearato de Magnesio') {
-                            let check = enoughStock(j, 16);
-                            if (check) MPs[j].cantidad -=16;
+                            let check = enoughStock(j, 16*cant);
+                            if (check) MPs[j].cantidad -=(16*cant);
                         }
-                        if (!check) break;
                         if (MPs[j].nombre == 'Dioxido de silicio') {
-                            let check = enoughStock(j, 21);
-                            if (check) MPs[j].cantidad -=21;
+                            let check = enoughStock(j, 21*cant);
+                            if (check) MPs[j].cantidad -=(21*cant);
                         }
-                        if (!check) break;
                         if (MPs[j].nombre == 'Croscarmelosa sodica') {
-                            let check = enoughStock(j, 55);
-                            if (check) MPs[j].cantidad -=55;
+                            let check = enoughStock(j, 55*cant);
+                            if (check) MPs[j].cantidad -=(55*cant);
                         }
-                        if (!check) break;
                         if (MPs[j].nombre == 'Proteina de Soja') {
-                            let check = enoughStock(j, 32);
-                            if (check) MPs[j].cantidad -=32;
+                            let check = enoughStock(j, 32*cant);
+                            if (check) MPs[j].cantidad -=(32*cant);
                         }
-                        if (!check) break;
-                    }
-                };
+                        if (j+1==id) {
+                            var pt = true;
+                        }
+                    confirmation(check,pt);
+                    if(!check) break;
+                }
                 break;
-        }
-        if (check) {
-            alert ('Producto generado con exito');
-        }else{
-            alert('Ha ocurrido un problema');
-        }
-
+        } 
         guardarLocal("listaMPs", JSON.stringify(MPs));
+
     }else if(id==0) {
         alert("No posee la cantidad suficiente para realizar el producto");
     }else{
@@ -113,14 +106,21 @@ function generateProduct(product) {
 };
 
 function enoughStock (j, cant) {
-    MPs = JSON.parse(localStorage.getItem("listaMPs"));
-    if(MPs[j].cantidad>=cant) {
+    let checkMPs = JSON.parse(localStorage.getItem("listaMPs"));
+    if(checkMPs[j].cantidad>=cant) {
         return true;
     }else{
-        alert("No posee la cantidad suficiente para realizar el producto");
         return false;
     }
 };
+
+function confirmation (c,f) {
+    if (c&&f) {
+        alert ('Producto generado con exito');
+    }else if(!c){
+        alert("No posee la cantidad suficiente para realizar el producto");
+    }
+}
 
 // recipes
 /*let prod1 = {
