@@ -23,18 +23,18 @@ guardarLocal("listaMPs", JSON.stringify(MPs));
 
 function generateProduct(product) {
     let cant = parseInt(prompt('Cuantas mezclas desea realizar? (1 mezcla = 125.000 comprimidos) Maximo 10 mezclas'));
-    
-    if (cant>0&&cant<=10){    
-        MPs = JSON.parse(localStorage.getItem("listaMPs"));
-        let id = MPs.length;
+    MPs = JSON.parse(localStorage.getItem("listaMPs"));
+    let id = MPs.length;
+    if (cant>0&&cant<=10&&id!=0){  
+        let check = false;  
         switch (product) {
             case 1:
                 for (i=0;i<cant;i++) {
                     for (j=0;j<id;j++) {
-                        let check = false;
                         if (MPs[j].nombre == 'Estearato de Magnesio') {
                             let check = enoughStock(j, 10);
                             if (check) MPs[j].cantidad -=10;
+                            console.log(MPs[j].cantidad);
                         }
                         if (!check) break;
                         if (MPs[j].nombre == 'Fosfato Tricalcico') {
@@ -49,12 +49,10 @@ function generateProduct(product) {
                         if (!check) break;
                     }
                 };
-                alert ('Producto generado con exito');
                 break;
             case 2:
                 for (i=0;i<cant;i++) {
                     for (j=0;j<id;j++) {
-                        let check = false;
                         if (MPs[j].nombre == 'Estearato de Magnesio') {
                             let check = enoughStock(j, 50);
                             if (check) MPs[j].cantidad -=50;
@@ -72,12 +70,10 @@ function generateProduct(product) {
                         if (!check) break;
                     }
                 };
-                alert ('Producto generado con exito');
                 break;
             case 3:
                 for (i=0;i<cant;i++) {
                     for (j=0;j<id;j++) {
-                        let check = false;
                         if (MPs[j].nombre == 'Estearato de Magnesio') {
                             let check = enoughStock(j, 16);
                             if (check) MPs[j].cantidad -=16;
@@ -100,11 +96,17 @@ function generateProduct(product) {
                         if (!check) break;
                     }
                 };
-                alert ('Producto generado con exito');
                 break;
+        }
+        if (check) {
+            alert ('Producto generado con exito');
+        }else{
+            alert('Ha ocurrido un problema');
         }
 
         guardarLocal("listaMPs", JSON.stringify(MPs));
+    }else if(id==0) {
+        alert("No posee la cantidad suficiente para realizar el producto");
     }else{
         alert('Ingrese un numero valido');
     }
